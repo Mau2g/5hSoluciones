@@ -7,7 +7,60 @@
 <body>
 <pre>
 
-<!-- Aquí dentro va tu código en texto plano -->
+enum TipoPlaneta { GASEOSO, TERRESTRE, ENANO }
+
+class Planeta {
+    private String nombre = null;
+    private int satelites = 0;
+    private double masa = 0;
+    private double volumen = 0;
+    private int diametro = 0;
+    private int distanciaSol = 0;
+    private TipoPlaneta tipo;
+    private boolean observable = false;
+
+    public Planeta(String nombre, int satelites, double masa, double volumen, int diametro, int distanciaSol, TipoPlaneta tipo, boolean observable) {
+        this.nombre = nombre;
+        this.satelites = satelites;
+        this.masa = masa;
+        this.volumen = volumen;
+        this.diametro = diametro;
+        this.distanciaSol = distanciaSol;
+        this.tipo = tipo;
+        this.observable = observable;
+    }
+
+    public void mostrarDatos() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Satélites: " + satelites);
+        System.out.println("Masa: " + masa);
+        System.out.println("Volumen: " + volumen);
+        System.out.println("Diámetro: " + diametro);
+        System.out.println("Distancia al Sol: " + distanciaSol);
+        System.out.println("Tipo: " + tipo);
+        System.out.println("Observable: " + observable);
+    }
+
+    public double densidad() {
+        return masa / volumen;
+    }
+
+    public boolean esExterior() {
+        double ua = distanciaSol / 149597870.0;
+        return ua > 3.4;
+    }
+
+    public static void main(String[] args) {
+        Planeta p1 = new Planeta("Júpiter", 79, 1.898e27, 1.431e15, 139820, 778500000, TipoPlaneta.GASEOSO, true);
+        Planeta p2 = new Planeta("Mercurio", 0, 3.301e23, 6.083e10, 4879, 57900000, TipoPlaneta.TERRESTRE, true);
+        p1.mostrarDatos();
+        System.out.println("Densidad: " + p1.densidad());
+        System.out.println("Es exterior: " + p1.esExterior());
+        p2.mostrarDatos();
+        System.out.println("Densidad: " + p2.densidad());
+        System.out.println("Es exterior: " + p2.esExterior());
+    }
+}
 
 </pre>
 </body>
