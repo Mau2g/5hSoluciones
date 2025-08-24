@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Código Java</title>
+</head>
+<body>
+<pre>
+class Persona {
+    private String nombre;
+    private String apellido;
+    private String documento;
+    private int anioNacimiento;
+
+    public Persona(String nombre, String apellido, String documento, int anioNacimiento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.documento = documento;
+        this.anioNacimiento = anioNacimiento;
+    }
+
+    public void mostrarDatos() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Apellido: " + apellido);
+        System.out.println("Documento: " + documento);
+        System.out.println("Año de nacimiento: " + anioNacimiento);
+    }
+
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Juan", "Pérez", "12345678", 1999);
+        Persona p2 = new Persona("María", "López", "87654321", 2001);
+        p1.mostrarDatos();
+        p2.mostrarDatos();
+    }
+}
+</pre>
+</body>
+</html>
