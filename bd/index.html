@@ -1,0 +1,32 @@
+erDiagram
+    CLIENTES {
+      INT IdCliente PK
+      VARCHAR Nombre
+      VARCHAR Apellido
+      VARCHAR Email
+    }
+
+    HABITACIONES {
+      INT NumeroHabitacion PK
+      VARCHAR Tipo
+      DECIMAL PrecioPorNoche
+      INT Capacidad
+    }
+
+    RESERVAS {
+      INT IdReserva PK
+      DATE FechaEntrada
+      DATE FechaSalida
+      INT NumeroHuespedes
+      INT IdCliente FK
+    }
+
+    ASIGNACION_HABITACIONES {
+      INT IdReserva PK,FK
+      INT NumeroHabitacion PK,FK
+      DECIMAL CostoTotal
+    }
+
+    CLIENTES ||--o{ RESERVAS : "1:N"
+    RESERVAS ||--o{ ASIGNACION_HABITACIONES : "1:N"
+    HABITACIONES ||--o{ ASIGNACION_HABITACIONES : "1:N"
