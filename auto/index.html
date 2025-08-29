@@ -7,110 +7,24 @@
 <body>
 <pre>
 
-enum Combustible { GASOLINA, BIOETANOL, DIESEL, BIODIESEL, GAS_NATURAL }
-enum TipoAuto { CIUDAD, SUBCOMPACTO, COMPACTO, FAMILIAR, EJECUTIVO, SUV }
-enum Color { BLANCO, NEGRO, ROJO, NARANJA, AMARILLO, VERDE, AZUL, VIOLETA }
 
-class Automovil {
-    private String marca;
-    private int modelo;
-    private double motor;
-    private Combustible combustible;
-    private TipoAuto tipo;
-    private int puertas;
-    private int asientos;
-    private int velocidadMax;
-    private Color color;
-    private int velocidadActual;
-    private boolean automatico; // ejercicio propuesto
-    private int multas; // ejercicio propuesto
+import random, string, argparse  # Random/texto y manejo de argumentos
 
-    public Automovil(String marca, int modelo, double motor, Combustible combustible, TipoAuto tipo, int puertas, int asientos, int velocidadMax, Color color, boolean automatico) { // ejercicio propuesto
-        this.marca = marca;
-        this.modelo = modelo;
-        this.motor = motor;
-        this.combustible = combustible;
-        this.tipo = tipo;
-        this.puertas = puertas;
-        this.asientos = asientos;
-        this.velocidadMax = velocidadMax;
-        this.color = color;
-        this.automatico = automatico; // ejercicio propuesto
-        this.velocidadActual = 0;
-        this.multas = 0; // ejercicio propuesto
-    }
+def crear_archivo(tamaño_mb):
+    n=f"ArchGen_{tamaño_mb}MB.txt"  # Nombre auto
+    chars=string.ascii_letters+string.digits  # Letras+números
+    size=tamaño_mb*1024*1024  # MB→bytes
+    with open(n,"w",encoding="utf-8") as f:
+        for _ in range(size//1024):  # Bloques de 1KB (más rápido, menos RAM)
+            f.write("".join(random.choice(chars) for _ in range(1024)))
+        f.write("".join(random.choice(chars) for _ in range(size%1024)))  # Sobrante
+    print(f"Archivo '{n}' creado con {tamaño_mb} MB.")  # Confirmación
 
-    public boolean isAutomatico() { // ejercicio propuesto
-        return automatico;
-    }
-
-    public void setAutomatico(boolean automatico) { // ejercicio propuesto
-        this.automatico = automatico;
-    }
-
-    public void acelerar(int incremento) {
-        velocidadActual += incremento;
-        if (velocidadActual > velocidadMax) { // ejercicio propuesto
-            multas += 500; // ejercicio propuesto
-            velocidadActual = velocidadMax; // ejercicio propuesto (se fuerza al límite)
-        }
-    }
-
-    public void desacelerar(int decremento) {
-        velocidadActual -= decremento;
-        if (velocidadActual < 0) {
-            velocidadActual = 0;
-        }
-    }
-
-    public void frenar() {
-        velocidadActual = 0;
-    }
-
-    public double tiempoLlegada(double distancia) {
-        if (velocidadActual == 0) return Double.POSITIVE_INFINITY;
-        return distancia / velocidadActual;
-    }
-
-    public boolean tieneMultas() { // ejercicio propuesto
-        return multas > 0;
-    }
-
-    public int valorMultas() { // ejercicio propuesto
-        return multas;
-    }
-
-    public void mostrarDatos() {
-        System.out.println("Marca: " + marca);
-        System.out.println("Modelo: " + modelo);
-        System.out.println("Motor: " + motor);
-        System.out.println("Combustible: " + combustible);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Puertas: " + puertas);
-        System.out.println("Asientos: " + asientos);
-        System.out.println("Velocidad Max: " + velocidadMax);
-        System.out.println("Color: " + color);
-        System.out.println("Velocidad Actual: " + velocidadActual);
-        System.out.println("Automático: " + automatico); // ejercicio propuesto
-        System.out.println("Multas: " + multas); // ejercicio propuesto
-    }
-
-    public static void main(String[] args) {
-        Automovil a1 = new Automovil("Toyota", 2020, 2.0, Combustible.GASOLINA, TipoAuto.SUV, 4, 5, 180, Color.ROJO, true); // ejercicio propuesto
-        a1.mostrarDatos();
-        a1.velocidadActual = 100;
-        System.out.println("Velocidad actual: " + a1.velocidadActual);
-        a1.acelerar(20);
-        System.out.println("Velocidad actual: " + a1.velocidadActual);
-        a1.desacelerar(50);
-        System.out.println("Velocidad actual: " + a1.velocidadActual);
-        a1.frenar();
-        System.out.println("Velocidad actual: " + a1.velocidadActual);
-        System.out.println("Tiene multas: " + a1.tieneMultas()); // ejercicio propuesto
-        System.out.println("Valor multas: " + a1.valorMultas()); // ejercicio propuesto
-    }
-}
-
+if __name__=="__main__":
+    p=argparse.ArgumentParser(description="Generador de archivos aleatorios (letras/números)")
+    p.add_argument("tamaño",type=int,help="Tamaño en MB del archivo")  # Parámetro en consola
+    args=p.parse_args()
+    crear_archivo(args.tamaño)
 </pre>
 </body>
 </html>
