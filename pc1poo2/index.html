@@ -6,59 +6,68 @@
 </head>
 <body>
 <pre>
-
-enum TipoPlaneta { GASEOSO, TERRESTRE, ENANO }
-
-class Planeta {
-    private String nombre = null;
-    private int satelites = 0;
-    private double masa = 0;
-    private double volumen = 0;
-    private int diametro = 0;
-    private int distanciaSol = 0;
-    private TipoPlaneta tipo;
-    private boolean observable = false;
-
-    public Planeta(String nombre, int satelites, double masa, double volumen, int diametro, int distanciaSol, TipoPlaneta tipo, boolean observable) {
+public class Docente {
+ private String nombre;
+ private String apellido; 
+ private int horas;
+ private String tipo;
+ 
+ //a) constructor público que inicializa a todos los atributos
+    public Docente(String nombre, String apellido, int horas, String tipo) {
         this.nombre = nombre;
-        this.satelites = satelites;
-        this.masa = masa;
-        this.volumen = volumen;
-        this.diametro = diametro;
-        this.distanciaSol = distanciaSol;
+        this.apellido = apellido;
+        this.horas = horas;
         this.tipo = tipo;
-        this.observable = observable;
     }
 
-    public void mostrarDatos() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Satélites: " + satelites);
-        System.out.println("Masa: " + masa);
-        System.out.println("Volumen: " + volumen);
-        System.out.println("Diámetro: " + diametro);
-        System.out.println("Distancia al Sol: " + distanciaSol);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Observable: " + observable);
+ //b) Métodos de acceso: set/get para los atributos.
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    public int getHoras() {
+        return horas;
+    }
+    public void setHoras(int horas) {
+        this.horas = horas;
+    }
+    public String getTipo() {
+        return tipo;
+    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public double densidad() {
-        return masa / volumen;
+  //c) Un método que retorne el nombre completo (nombre y apellido)
+    public String nombrecompleto() {return nombre + " " + apellido;
     }
-
-    public boolean esExterior() {
-        double ua = distanciaSol / 149597870.0;
-        return ua > 3.4;
+    
+  //d) Un método que retorne el suelto Bruto (Ciencia=3; Letras=5)
+    public double sueldobruto(){
+      double tarifa;
+      if (tipo == null) tarifa = 0;
+      else if (tipo.equalsIgnoreCase("Ciencia")) tarifa = 3;
+      else if (tipo.equalsIgnoreCase("Letras")) tarifa = 5;
+      else tarifa = 0;
+      return horas*tarifa;
     }
-
+    
+  //e) Un método que retorne el descuento del 0.10
+    public double descuento(){return sueldobruto()*0.1;}
+    
+  //f) Un método que retorne el sueldo neto 
+    public double sueldoneto(){return sueldobruto()- descuento();}
+    
     public static void main(String[] args) {
-        Planeta p1 = new Planeta("Júpiter", 79, 1.898e27, 1.431e15, 139820, 778500000, TipoPlaneta.GASEOSO, true);
-        Planeta p2 = new Planeta("Mercurio", 0, 3.301e23, 6.083e10, 4879, 57900000, TipoPlaneta.TERRESTRE, true);
-        p1.mostrarDatos();
-        System.out.println("Densidad: " + p1.densidad());
-        System.out.println("Es exterior: " + p1.esExterior());
-        p2.mostrarDatos();
-        System.out.println("Densidad: " + p2.densidad());
-        System.out.println("Es exterior: " + p2.esExterior());
+        
     }
 }
 
