@@ -67,7 +67,11 @@ public class Docente {
     public double sueldoneto(){return sueldobruto()- descuento();}
     
     public static void main(String[] args) {
-        
+        Docente d1 = new Docente("Tulio", "Checo", 30, "Ciencia");
+        System.out.println("Docente: " + d1.nombrecompleto());
+        System.out.println("Tipo : " + d1.getTipo());
+        System.out.println("Sueldo Bruto : " + d1.sueldobruto());
+        System.out.println("Sueldo Neto : " + d1.sueldoneto());   
     }
 }
 
