@@ -6,33 +6,16 @@
 </head>
 <body>
 <pre>
-class Persona {
-    private String nombre;
-    private String apellido;
-    private String documento;
-    private int anioNacimiento;
-
-    public Persona(String nombre, String apellido, String documento, int anioNacimiento) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.documento = documento;
-        this.anioNacimiento = anioNacimiento;
-    }
-
-    public void mostrarDatos() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Apellido: " + apellido);
-        System.out.println("Documento: " + documento);
-        System.out.println("Año de nacimiento: " + anioNacimiento);
-    }
-
-    public static void main(String[] args) {
-        Persona p1 = new Persona("Juan", "Pérez", "12345678", 1999);
-        Persona p2 = new Persona("María", "López", "87654321", 2001);
-        p1.mostrarDatos();
-        p2.mostrarDatos();
-    }
-}
+Observaciones defectuosas (x)	80
+Tamaño de muestra (n)	2000
+Nivel de confianza	0.94
+Proporción muestral (p̂)	=B1/B2
+α	=1-B3
+z crítico	=NORM.S.INV(1-B5/2)
+Error estándar (SE)	=SQRT(B4*(1-B4)/B2)
+Margen de error (z*SE)	=B6*B7
+Límite inferior	=B4-B8
+Límite superior	=B4+B8
 </pre>
 </body>
 </html>
