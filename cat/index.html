@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spinning Cat GIF</title>
+  <style>
+    /* Centrar y darle algo de margen al contenedor */
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f7f7f8;
+    }
+    .gif-wrapper {
+      width: min(720px, 95%);
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .caption {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+    /* Asegura que el embed ocupe el 100% del contenedor si usa data-width="100%" */
+    .tenor-gif-embed {
+      width: 100% !important;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="gif-wrapper">
+    <!-- Código de embed de Tenor -->
+    <div class="tenor-gif-embed"
+         data-postid="1175703927588788964"
+         data-share-method="host"
+         data-aspect-ratio="0.564257"
+         data-width="100%">
+      <a href="https://tenor.com/view/spinning-cat-gif-1175703927588788964">Spinning Cat GIF</a>
+      from
+      <a href="https://tenor.com/search/spinning-gifs">Spinning GIFs</a>
+    </div>
+
+    <!-- Texto opcional debajo del GIF -->
+    <div class="caption">
+      Spinning Cat GIF — embed de Tenor
+    </div>
+  </div>
+
+  <!-- Script oficial de Tenor que convierte el div en el GIF embebido -->
+  <script async src="https://tenor.com/embed.js"></script>
+</body>
+</html>
